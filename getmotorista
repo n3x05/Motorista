@@ -1,0 +1,56 @@
+<?php
+
+require_once('../conector.php');
+
+$query = "SELECT NOME_MOT, EMAIL_MOT, TELEFONE_MOT, DDD_MOT, ENDE_MOT, NUM_MOT, BAIRRO_MOT, COMP_MOT, CEP_MOT, CIDADE_MOT, ESTADO_MOT FROM motorista";
+
+$response = @mysqli_query($dbc, $query);
+
+if($response){
+
+	echo 'table align= "left"
+	cellspacing= "5" cellpadding="8">
+	
+	<tr><td align= "left"><b>NOME</b></td>
+	<td align= "left"><b>EMAIL</b></td>
+	<td align= "left"><b>TELEFONE</b></td>
+	<td align= "left"><b>DDD</b></td>
+	<td align= "left"><b>ENDE</b></td>
+	<td align= "left"><b>NUM</b></td>
+	<td align= "left"><b>BAIRRO</b></td>
+	<td align= "left"><b>COMP</b></td>
+	<td align= "left"><b>CEP</b></td>
+	<td align= "left"><b>CIDADE</b></td>
+	<td align= "left"><b>ESTADO</b></td></tr>';
+
+    while($row = mysqli_fetch_array($response)){
+	
+	echo '<tr><td align="left">' .
+	$row['NOME_MOT'] . '</td><td align= "left">' .
+	$row['EMAIL_MOT'] . '</td><td align= "left">' .
+	$row['TELEFONE_MOT'] . '</td><td align= "left">' .
+	$row['DDD_MOT'] . '</td><td align= "left">' .
+	$row['ENDE_MOT'] . '</td><td align= "left">' .
+	$row['NUM_MOT'] . '</td><td align= "left">' .
+	$row['BAIRRO_MOT'] . '</td><td align= "left">' .
+	$row['COMP_MOT'] . '</td><td align= "left">' .
+	$row['CEP_MOT'] . '</td><td align= "left">' .
+	$row['CIDADE_MOT'] . '</td><td align= "left">' .
+	$row['ESTADO_MOT'] . '</td><td align= "left">';
+	
+	echo '</tr>';
+	}
+	
+
+	echo '</table>';
+	
+}else {
+	
+	echo "Falha no query<br />";
+	
+	echo mysqli_error($dbc);
+	
+}
+mysqli_close($dbc)
+
+?>
