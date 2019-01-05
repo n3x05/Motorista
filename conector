@@ -1,0 +1,13 @@
+<?php
+
+DEFINE ('DB_USER', 'conector');
+DEFINE ('DB_PASSWORD', 'conector');
+DEFINE ('DB_HOST') , 'localhost');
+DEFINE ('DB_NAME') , 'testedb');
+
+$dbc = @mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME)
+OR die('Nao foi possivel conectar com o SQL ' .
+		mysqli_connect_error());
+		
+?>
+	
